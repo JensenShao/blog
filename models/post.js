@@ -121,7 +121,11 @@ Post.getTen = function(name, page, callback){
 					}
 					
 					docs.forEach(function(doc){
-						doc.post=markdown.toHTML(doc.post);
+						console.log("doc post is "+doc.post);
+						if(doc.post){
+							console.log("doc post is on " + doc.post);
+							doc.post=markdown.toHTML(doc.post);
+						}							
 					});
 					callback(null,docs,total);
 				});
@@ -153,7 +157,7 @@ Post.getOne = function(name, day, title, callback){
 				}
 				
 //				doc.post=markdown.toHTML(doc.post);
-				if(doc){
+				if(doc.post){
 					doc.post =markdown.toHTML(doc.post);
 					doc.comments.forEach(function(comment){
 						comment.content = markdown.toHTML(comment.content);
