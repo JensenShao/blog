@@ -6,6 +6,12 @@
 	<p class="info">
 		Author: <a href="/u/<%= post.name%>"><%= post.name %></a>
 		Date: <%= post.time.minute %>
+		标签: 
+    <% post.tags.forEach(function(tag,index){ %>
+    	<% if(tag) { %>
+    		<a href="/tags/<%= tag %>" class="tag"><%= tag %></a>
+    	<% } %>
+    <% }) %>
 	</p>
 <%})%>
 <%- include paging %>
